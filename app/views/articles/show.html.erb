@@ -1,0 +1,41 @@
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<h1><%= @article.title %></h1>
+
+<% unless @article.user.nil? %>
+<p>
+	Escrito por: <%= @article.user.email %>
+</p>
+<% end %>
+
+<div class="field">
+	<% @article.categories.each do |category| %>
+	<%= link_to category.name, category, style:"color:#{category.color};" %>
+	<% end %>
+</div>
+
+<div class="field">
+	<%= image_tag @article.cover.url(:thumb) %>
+</div>
+
+<p>
+	Visitas: <%= @article.visits_count %>
+</p>
+
+<div>
+	<%= @article.body.html_safe %>
+</div>
+<div class="field">
+	<h3>Comentarios</h3>
+	<%= render "comments/form" %>
+	<ul id="comments-box">
+		<% @article.comments.each do |comment| %>
+		<li>
+			<%= comment.body %> - <%= comment.user.email%>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+<div>
+	<%= link_to "Editar", edit_article_path(@article) %>
+</div>
