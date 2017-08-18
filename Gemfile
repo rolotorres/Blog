@@ -54,6 +54,9 @@ gem "trix"
 #Bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+#Tawk Live Chat
+gem 'tawk_rails', '~> 1.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
